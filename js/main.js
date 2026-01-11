@@ -9,6 +9,11 @@ import { renderCustomers } from './pages/customers.js';
 import { renderCustomerDetail } from './pages/customer-detail.js';
 import { renderAIConsultation } from './pages/ai-consultation.js';
 import { renderLogin } from './pages/login.js';
+import { renderDocuments } from './pages/documents.js';
+import { renderCases } from './pages/cases.js';
+import { renderCalendar } from './pages/calendar.js';
+import { renderAnalytics } from './pages/analytics.js';
+import { renderReports } from './pages/reports.js';
 import { aiResponseTemplates } from './data/mock-data.js';
 import { supabase } from './supabase.js';
 
@@ -32,11 +37,11 @@ function initRouter() {
     router.register('customers', renderCustomers);
     router.register('customer-detail', renderCustomerDetail);
     router.register('ai-consultation', renderAIConsultation);
-    router.register('documents', renderEmptyPage('서류 관리', 'files'));
-    router.register('cases', renderEmptyPage('케이스 현황', 'folder-open'));
-    router.register('calendar', renderEmptyPage('일정 관리', 'calendar'));
-    router.register('analytics', renderEmptyPage('통계/분석', 'chart-line'));
-    router.register('reports', renderEmptyPage('리포트', 'file-text'));
+    router.register('documents', renderDocuments);
+    router.register('cases', renderCases);
+    router.register('calendar', renderCalendar);
+    router.register('analytics', renderAnalytics);
+    router.register('reports', renderReports);
 }
 
 function renderEmptyPage(title, icon) {

@@ -102,7 +102,7 @@
           <div class="search-bar">
             <i class="ph ph-magnifying-glass search-icon"></i>
             <input type="text" class="search-input" placeholder="통합 검색...">
-            <span class="search-shortcut">⌘K</span>
+            <span class="search-shortcut">Ctrl+K</span>
           </div>
           <button class="btn-icon header-btn">
             <i class="ph ph-bell"></i>
@@ -150,10 +150,12 @@
 
         <div class="chatbot-footer">
           <div class="chatbot-input-area">
-            <textarea id="chatbotInput" placeholder="질문을 입력하세요..." rows="1"></textarea>
-            <button id="chatbotSend" disabled>
-              <i class="ph ph-paper-plane-right"></i>
-            </button>
+            <div class="chatbot-input-wrapper">
+              <textarea id="chatbotInput" class="chatbot-input" placeholder="궁금한 점을 물어보세요..." rows="1"></textarea>
+              <button id="chatbotSend" class="chatbot-send-btn" disabled>
+                <i class="ph ph-paper-plane-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

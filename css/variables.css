@@ -10,76 +10,104 @@
   --color-primary-light: #2B6CB0;
   --color-primary-dark: #0F2342;
 
-  /* ===== Colors - Secondary ===== */
-  --color-secondary: #319795;
-  --color-secondary-light: #4FD1C5;
-  --color-accent: #ED8936;
+  /* ----- Color Palette (Modern Legal SaaS) ----- */
+  /* Primary (Trust Blue) */
+  --color-primary: #2563EB;
+  /* Vivid Royal Blue */
+  --color-primary-light: #EFF6FF;
+  /* Very Light Blue Background */
+  --color-primary-dark: #1E40AF;
+  /* Deep Blue for Hover */
 
-  /* ===== Colors - Semantic ===== */
-  --color-success: #38A169;
-  --color-warning: #D69E2E;
-  --color-error: #E53E3E;
-  --color-info: #3182CE;
+  /* Secondary (Teal/Green - Action) */
+  --color-secondary: #0D9488;
+  /* Modern Teal */
+  --color-secondary-light: #F0FDFA;
 
-  /* ===== Colors - Neutral ===== */
-  --color-bg: #FFFFFF;
-  --color-bg-alt: #F7FAFC;
-  --color-surface: #EDF2F7;
-  --color-border: #E2E8F0;
-  --color-text-primary: #2D3748;
-  --color-text-secondary: #718096;
-  --color-text-muted: #A0AEC0;
+  /* Accent (Orange - Highlight) */
+  --color-accent: #F59E0B;
+  --color-accent-light: #FFFBEB;
 
-  /* ===== Colors - Visa Types ===== */
-  --color-visa-niw: #6B46C1;
-  --color-visa-niw-bg: #E9D8FD;
-  --color-visa-eb1: #DD6B20;
-  --color-visa-eb1-bg: #FEEBC8;
-  --color-visa-eb5: #38B2AC;
-  --color-visa-eb5-bg: #B2F5EA;
-  --color-visa-f1: #4299E1;
-  --color-visa-f1-bg: #BEE3F8;
-  --color-visa-h1b: #48BB78;
-  --color-visa-h1b-bg: #C6F6D5;
+  /* Semantic Status Colors */
+  --color-success: #10B981;
+  /* Modern Green */
+  --color-success-light: #D1FAE5;
+  --color-warning: #F59E0B;
+  /* Amber */
+  --color-warning-light: #FEF3C7;
+  --color-error: #EF4444;
+  /* Red */
+  --color-error-light: #FEE2E2;
+  --color-info: #3B82F6;
+  /* Blue */
+  --color-info-light: #DBEAFE;
 
-  /* ===== Typography ===== */
-  --font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Neutrals & Text */
+  --color-bg: #F3F4F6;
+  /* Main App Background (Cool Gray) */
+  --color-bg-alt: #F9FAFB;
+  /* Secondary Background */
+  --color-surface: #FFFFFF;
+  /* Card Background */
+  --color-text-primary: #111827;
+  /* Very Dark Gray */
+  --color-text-secondary: #4B5563;
+  /* Medium Gray */
+  --color-text-muted: #9CA3AF;
+  /* Light Gray */
+  --color-border: #E5E7EB;
+  /* Light Border */
+  --color-border-hover: #D1D5DB;
 
-  /* ===== Font Sizes ===== */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
+  /* Visa Type Specific Colors (for legacy support) */
+  --color-visa-niw: #2563EB;
+  --color-visa-eb1: #10B981;
+  --color-visa-eb2: #F59E0B;
 
-  /* ===== Font Weights ===== */
+  /* ----- Typography ----- */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-lg: 1.125rem;
+  /* 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px */
+  --font-size-2xl: 1.5rem;
+  /* 24px */
+  --font-size-3xl: 1.875rem;
+  /* 30px */
+
+  /* Weights */
   --font-regular: 400;
   --font-medium: 500;
   --font-semibold: 600;
   --font-bold: 700;
 
-  /* ===== Spacing ===== */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
+  /* ----- Spacing System ----- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
 
-  /* ===== Border Radius ===== */
-  --radius-sm: 4px;
+  /* ----- Layout Dimensions ----- */
+  --header-height: 70px;
+  --sidebar-width: 280px;
+
+  /* ----- Borders & Shadows ----- */
+  --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  /* Modern Soft Radius */
   --radius-xl: 16px;
   --radius-full: 9999px;
 

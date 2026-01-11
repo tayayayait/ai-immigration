@@ -256,3 +256,70 @@ export const dashboardStats = {
     caseGrowth: -3.2,
     completionGrowth: 8.3
 };
+
+// 서류 데이터
+export const documents = [
+    { id: 'D001', customerId: 'C001', customerName: '홍길동', docType: '여권 사본', status: 'approved', uploadDate: '2024-08-20', expiryDate: '2034-08-20' },
+    { id: 'D002', customerId: 'C001', customerName: '홍길동', docType: '학위 증명서', status: 'approved', uploadDate: '2024-08-22', expiryDate: null },
+    { id: 'D003', customerId: 'C001', customerName: '홍길동', docType: '추천서 1', status: 'approved', uploadDate: '2024-09-01', expiryDate: null },
+    { id: 'D004', customerId: 'C001', customerName: '홍길동', docType: '추천서 2', status: 'pending', uploadDate: '2024-09-05', expiryDate: null },
+    { id: 'D005', customerId: 'C002', customerName: '김영희', docType: '여권 사본', status: 'approved', uploadDate: '2024-10-25', expiryDate: '2033-05-15' },
+    { id: 'D006', customerId: 'C002', customerName: '김영희', docType: '이력서', status: 'pending', uploadDate: '2024-11-01', expiryDate: null },
+    { id: 'D007', customerId: 'C004', customerName: '박민수', docType: 'RFE 답변서', status: 'in-progress', uploadDate: '2024-01-08', expiryDate: null },
+    { id: 'D008', customerId: 'C005', customerName: '최지은', docType: 'OPT 신청서', status: 'pending', uploadDate: '2024-01-05', expiryDate: null }
+];
+
+// 케이스 데이터
+export const cases = [
+    { id: 'CS001', customerId: 'C001', customerName: '홍길동', visaType: 'NIW', status: 'in-progress', progress: 65, currentStep: 'I-140 심사 중', startDate: '2024-08-15', estimatedEnd: '2025-06-01', assignee: '김상담' },
+    { id: 'CS002', customerId: 'C002', customerName: '김영희', visaType: 'EB-1', status: 'pending', progress: 30, currentStep: '서류 준비 중', startDate: '2024-10-20', estimatedEnd: '2025-10-01', assignee: '김상담' },
+    { id: 'CS003', customerId: 'C003', customerName: '이철수', visaType: 'EB-5', status: 'completed', progress: 100, currentStep: '비자 발급 완료', startDate: '2023-05-10', estimatedEnd: '2024-01-10', assignee: '박상담' },
+    { id: 'CS004', customerId: 'C004', customerName: '박민수', visaType: 'H-1B', status: 'in-progress', progress: 45, currentStep: 'RFE 대응 중', startDate: '2024-06-01', estimatedEnd: '2025-03-01', assignee: '김상담' },
+    { id: 'CS005', customerId: 'C005', customerName: '최지은', visaType: 'F-1', status: 'pending', progress: 15, currentStep: 'OPT 신청 준비', startDate: '2024-11-01', estimatedEnd: '2025-02-01', assignee: '박상담' }
+];
+
+// 일정 데이터
+export const calendarEvents = [
+    { id: 'E001', title: '홍길동 상담', type: 'consultation', date: '2025-01-13', time: '10:00', customer: '홍길동', description: 'NIW 진행 상황 안내' },
+    { id: 'E002', title: '박민수 RFE 마감', type: 'deadline', date: '2025-01-15', time: null, customer: '박민수', description: 'RFE 답변서 제출 기한' },
+    { id: 'E003', title: '김영희 서류 검토', type: 'task', date: '2025-01-14', time: '14:00', customer: '김영희', description: '추천서 검토 미팅' },
+    { id: 'E004', title: '최지은 초기 상담', type: 'consultation', date: '2025-01-16', time: '11:00', customer: '최지은', description: 'OPT 신청 관련 상담' },
+    { id: 'E005', title: '팀 미팅', type: 'meeting', date: '2025-01-17', time: '09:00', customer: null, description: '주간 케이스 리뷰' },
+    { id: 'E006', title: '이철수 비자 수령', type: 'task', date: '2025-01-11', time: '15:00', customer: '이철수', description: '비자 수령 안내 연락' }
+];
+
+// 분석 데이터
+export const analyticsData = {
+    visaTypeStats: [
+        { type: 'NIW', count: 45, successRate: 92 },
+        { type: 'EB-1', count: 23, successRate: 88 },
+        { type: 'EB-5', count: 12, successRate: 95 },
+        { type: 'H-1B', count: 67, successRate: 78 },
+        { type: 'F-1/OPT', count: 34, successRate: 96 }
+    ],
+    monthlyStats: [
+        { month: '2024-08', newCases: 12, completed: 8 },
+        { month: '2024-09', newCases: 15, completed: 10 },
+        { month: '2024-10', newCases: 18, completed: 12 },
+        { month: '2024-11', newCases: 14, completed: 11 },
+        { month: '2024-12', newCases: 20, completed: 15 },
+        { month: '2025-01', newCases: 8, completed: 5 }
+    ],
+    processingTimes: { avg: 8.5, min: 4, max: 14 },
+    satisfactionScore: 4.7
+};
+
+// 리포트 템플릿
+export const reportTemplates = [
+    { id: 'RT001', name: '월간 케이스 현황', description: '전체 케이스 진행 현황 요약', type: 'monthly' },
+    { id: 'RT002', name: '고객별 상담 이력', description: '특정 고객의 상담 기록 리포트', type: 'customer' },
+    { id: 'RT003', name: '비자 유형별 통계', description: '비자 종류별 승인률 및 처리 시간', type: 'analytics' },
+    { id: 'RT004', name: '연간 실적 보고서', description: '연간 케이스 완료 및 성과 분석', type: 'annual' }
+];
+
+// 리포트 히스토리
+export const reportHistory = [
+    { id: 'RH001', templateName: '월간 케이스 현황', generatedAt: '2025-01-01 09:00', period: '2024년 12월', status: 'completed' },
+    { id: 'RH002', templateName: '고객별 상담 이력', generatedAt: '2024-12-28 14:30', period: '홍길동', status: 'completed' },
+    { id: 'RH003', templateName: '비자 유형별 통계', generatedAt: '2024-12-15 10:00', period: '2024년 Q4', status: 'completed' }
+];
