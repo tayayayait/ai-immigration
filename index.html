@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 이민 수속·고객 관리 시스템</title>
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/chatbot.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/login.css">
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <i class="ph ph-airplane-tilt"></i>
+        </div>
+        <span class="logo-text">Immigration AI</span>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-category">MENU</div>
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <i class="ph ph-squares-four"></i>
+          <span>대시보드</span>
+        </a>
+        <a href="#" class="nav-item" data-page="customers">
+          <i class="ph ph-users"></i>
+          <span>고객 관리</span>
+        </a>
+        <a href="#" class="nav-item" data-page="documents">
+          <i class="ph ph-files"></i>
+          <span>서류 관리</span>
+        </a>
+        <a href="#" class="nav-item" data-page="cases">
+          <i class="ph ph-folder-open"></i>
+          <span>케이스 현황</span>
+        </a>
+        <a href="#" class="nav-item" data-page="calendar">
+          <i class="ph ph-calendar"></i>
+          <span>일정 관리</span>
+        </a>
+        <a href="#" class="nav-item" data-page="ai-consultation">
+          <i class="ph ph-chat-circle-text"></i>
+          <span>AI 상담</span>
+        </a>
+
+        <div class="nav-category" style="margin-top: 24px;">ANALYTICS</div>
+        <a href="#" class="nav-item" data-page="analytics">
+          <i class="ph ph-chart-line"></i>
+          <span>통계/분석</span>
+        </a>
+        <a href="#" class="nav-item" data-page="reports">
+          <i class="ph ph-file-text"></i>
+          <span>리포트</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin User</div>
+            <div class="user-role">Administrator</div>
+          </div>
+          <button class="btn-icon" style="margin-left: auto; color: var(--color-text-muted);"
+            onclick="alert('로그아웃 기능은 추후 구현 예정')">
+            <i class="ph ph-sign-out"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn">
+            <i class="ph ph-list"></i>
+          </button>
+          <h2 class="header-title">대시보드</h2>
+        </div>
+        <div class="header-right">
+          <div class="search-bar">
+            <i class="ph ph-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" placeholder="통합 검색...">
+            <span class="search-shortcut">⌘K</span>
+          </div>
+          <button class="btn-icon header-btn">
+            <i class="ph ph-bell"></i>
+            <span class="notification-badge"></span>
+          </button>
+          <button class="btn-icon header-btn">
+            <i class="ph ph-gear"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content" id="pageContent">
+        <!-- Dynamic Content Loaded via JS -->
+      </div>
+    </main>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+      <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="ph ph-chat-teardrop-dots"></i>
+      </div>
+
+      <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+          <div class="chatbot-title">
+            <i class="ph ph-robot"></i>
+            <span>AI Assistant</span>
+          </div>
+          <button class="btn-icon btn-ghost btn-sm" id="closeChatbot" style="color: white;">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+
+        <div class="chatbot-body" id="chatbotMessages">
+          <!-- Messages will be added here -->
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions" id="quickActions">
+          <button class="quick-action-btn">NIW 자격 요건</button>
+          <button class="quick-action-btn">필요 서류 안내</button>
+          <button class="quick-action-btn">수속 기간/비용</button>
+        </div>
+
+        <div class="chatbot-footer">
+          <div class="chatbot-input-area">
+            <textarea id="chatbotInput" placeholder="질문을 입력하세요..." rows="1"></textarea>
+            <button id="chatbotSend" disabled>
+              <i class="ph ph-paper-plane-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Modal Container -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+          <button class="btn-icon btn-ghost btn-sm" id="modalClose">
+            <i class="ph ph-x"></i>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Modal content -->
+        </div>
+        <div class="modal-footer" id="modalFooter">
+          <button class="btn btn-secondary" id="modalCancel">취소</button>
+          <button class="btn btn-primary" id="modalConfirm">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

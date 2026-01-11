@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIUXSpecification version="1.0" project="AI Immigration Management System" lastUpdated="2026-01-11">
+  
+  <!-- ==================== 1. 디자인 철학 ==================== -->
+  <DesignPhilosophy>
+    <CoreValues>
+      <Value id="trust" name="신뢰성" description="이민 수속이라는 중요한 과정에서 사용자에게 신뢰감을 주는 전문적이고 안정적인 디자인"/>
+      <Value id="clarity" name="명확성" description="복잡한 비자 정보와 수속 단계를 직관적으로 이해할 수 있는 정보 계층 구조"/>
+      <Value id="efficiency" name="효율성" description="상담사와 고객 모두 최소한의 클릭으로 필요한 정보에 접근 가능"/>
+      <Value id="consistency" name="일관성" description="전체 시스템에서 동일한 패턴과 컴포넌트 사용"/>
+    </CoreValues>
+    <Principles>
+      <Principle order="1">데이터 중심 설계: AI가 처리한 정보를 시각적으로 명확하게 표현</Principle>
+      <Principle order="2">프로그레시브 디스클로저: 정보를 단계적으로 공개하여 인지 부하 감소</Principle>
+      <Principle order="3">컨텍스트 기반 인터페이스: 사용자 역할과 현재 단계에 맞는 UI 제공</Principle>
+      <Principle order="4">에러 방지 설계: 입력 검증 및 명확한 피드백으로 오류 최소화</Principle>
+    </Principles>
+  </DesignPhilosophy>
+
+  <!-- ==================== 2. 색상 시스템 ==================== -->
+  <ColorSystem>
+    <PrimaryColors>
+      <Color id="primary" name="Navy Blue" hex="#1A365D" rgb="26,54,93" usage="주요 CTA 버튼, 헤더, 강조 요소"/>
+      <Color id="primary-light" name="Soft Blue" hex="#2B6CB0" rgb="43,108,176" usage="호버 상태, 활성 탭"/>
+      <Color id="primary-dark" name="Deep Navy" hex="#0F2342" rgb="15,35,66" usage="클릭/누른 상태"/>
+    </PrimaryColors>
+    <SecondaryColors>
+      <Color id="secondary" name="Teal" hex="#319795" rgb="49,151,149" usage="AI 관련 UI, 챗봇 강조"/>
+      <Color id="secondary-light" name="Light Teal" hex="#4FD1C5" rgb="79,209,197" usage="AI 응답 배경, 성공 메시지"/>
+      <Color id="accent" name="Coral" hex="#ED8936" rgb="237,137,54" usage="알림, 중요 표시, 뱃지"/>
+    </SecondaryColors>
+    <SemanticColors>
+      <Color id="success" name="Green" hex="#38A169" usage="수속 완료, 성공 메시지"/>
+      <Color id="warning" name="Amber" hex="#D69E2E" usage="주의 필요, 마감 임박"/>
+      <Color id="error" name="Red" hex="#E53E3E" usage="오류, 거절, 실패"/>
+      <Color id="info" name="Blue" hex="#3182CE" usage="정보 안내, 팁"/>
+    </SemanticColors>
+    <NeutralColors>
+      <Color id="bg" name="White" hex="#FFFFFF" usage="메인 배경"/>
+      <Color id="bg-alt" name="Gray 50" hex="#F7FAFC" usage="카드 배경, 섹션 구분"/>
+      <Color id="surface" name="Gray 100" hex="#EDF2F7" usage="입력 필드 배경"/>
+      <Color id="border" name="Gray 200" hex="#E2E8F0" usage="구분선, 테두리"/>
+      <Color id="text-primary" name="Gray 800" hex="#2D3748" usage="본문 텍스트"/>
+      <Color id="text-secondary" name="Gray 600" hex="#718096" usage="부가 설명 텍스트"/>
+      <Color id="text-muted" name="Gray 400" hex="#A0AEC0" usage="플레이스홀더, 비활성"/>
+    </NeutralColors>
+    <VisaTypeColors>
+      <Color id="niw" name="Purple" hex="#6B46C1" visaType="NIW"/>
+      <Color id="eb1" name="Orange" hex="#DD6B20" visaType="EB-1"/>
+      <Color id="eb5" name="Teal" hex="#38B2AC" visaType="EB-5"/>
+      <Color id="f1-opt" name="Blue" hex="#4299E1" visaType="F-1/OPT"/>
+      <Color id="h1b" name="Green" hex="#48BB78" visaType="H-1B"/>
+    </VisaTypeColors>
+  </ColorSystem>
+
+  <!-- ==================== 3. 타이포그래피 ==================== -->
+  <Typography>
+    <FontFamilies>
+      <FontFamily id="primary" name="Pretendard" fallback="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" usage="한글 및 영문"/>
+      <FontFamily id="mono" name="JetBrains Mono" fallback="'Fira Code', monospace" usage="코드, 데이터"/>
+    </FontFamilies>
+    <FontSizeScale>
+      <Size id="xs" rem="0.75" px="12" lineHeight="1.5" usage="캡션, 뱃지 텍스트"/>
+      <Size id="sm" rem="0.875" px="14" lineHeight="1.5" usage="보조 텍스트, 버튼 소"/>
+      <Size id="base" rem="1" px="16" lineHeight="1.6" usage="본문 텍스트"/>
+      <Size id="lg" rem="1.125" px="18" lineHeight="1.6" usage="강조 본문"/>
+      <Size id="xl" rem="1.25" px="20" lineHeight="1.5" usage="서브 헤딩"/>
+      <Size id="2xl" rem="1.5" px="24" lineHeight="1.4" usage="섹션 제목"/>
+      <Size id="3xl" rem="1.875" px="30" lineHeight="1.3" usage="페이지 제목"/>
+      <Size id="4xl" rem="2.25" px="36" lineHeight="1.2" usage="대시보드 헤더"/>
+      <Size id="5xl" rem="3" px="48" lineHeight="1.1" usage="히어로 텍스트"/>
+    </FontSizeScale>
+    <FontWeights>
+      <Weight id="regular" value="400" usage="본문 텍스트"/>
+      <Weight id="medium" value="500" usage="강조, 라벨"/>
+      <Weight id="semibold" value="600" usage="소제목, 버튼"/>
+      <Weight id="bold" value="700" usage="제목, 헤딩"/>
+    </FontWeights>
+    <TextStyles>
+      <Style id="h1" fontSize="2.25rem" fontWeight="700" lineHeight="1.2" letterSpacing="-0.02em"/>
+      <Style id="h2" fontSize="1.875rem" fontWeight="700" lineHeight="1.3" letterSpacing="-0.01em"/>
+      <Style id="h3" fontSize="1.5rem" fontWeight="600" lineHeight="1.4"/>
+      <Style id="h4" fontSize="1.25rem" fontWeight="600" lineHeight="1.5"/>
+      <Style id="h5" fontSize="1.125rem" fontWeight="600" lineHeight="1.5"/>
+      <Style id="h6" fontSize="1rem" fontWeight="600" lineHeight="1.5"/>
+      <Style id="body-lg" fontSize="1.125rem" fontWeight="400" lineHeight="1.6"/>
+      <Style id="body-md" fontSize="1rem" fontWeight="400" lineHeight="1.6"/>
+      <Style id="body-sm" fontSize="0.875rem" fontWeight="400" lineHeight="1.5"/>
+      <Style id="caption" fontSize="0.75rem" fontWeight="400" lineHeight="1.5" color="#718096"/>
+      <Style id="label" fontSize="0.875rem" fontWeight="500" lineHeight="1.5" color="#4A5568"/>
+    </TextStyles>
+  </Typography>
+
+  <!-- ==================== 4. 간격 및 그리드 ==================== -->
+  <SpacingAndGrid>
+    <SpacingScale>
+      <Space id="0" rem="0" px="0"/>
+      <Space id="1" rem="0.25" px="4" usage="아이콘-텍스트 간격"/>
+      <Space id="2" rem="0.5" px="8" usage="요소 내부 작은 간격"/>
+      <Space id="3" rem="0.75" px="12" usage="컴포넌트 내부 간격"/>
+      <Space id="4" rem="1" px="16" usage="기본 패딩"/>
+      <Space id="5" rem="1.25" px="20" usage="중간 간격"/>
+      <Space id="6" rem="1.5" px="24" usage="섹션 내부 간격"/>
+      <Space id="8" rem="2" px="32" usage="컴포넌트 간 간격"/>
+      <Space id="10" rem="2.5" px="40" usage="섹션 간 간격"/>
+      <Space id="12" rem="3" px="48" usage="대형 섹션 간격"/>
+      <Space id="16" rem="4" px="64" usage="페이지 섹션 구분"/>
+      <Space id="20" rem="5" px="80" usage="페이지 상하 여백"/>
+    </SpacingScale>
+    <GridSystem columns="12" maxWidth="1440px" containerPadding="24px" gap="24px">
+      <Column span="1" width="8.33%"/>
+      <Column span="2" width="16.66%"/>
+      <Column span="3" width="25%"/>
+      <Column span="4" width="33.33%"/>
+      <Column span="6" width="50%"/>
+      <Column span="8" width="66.66%"/>
+      <Column span="12" width="100%"/>
+    </GridSystem>
+    <LayoutStructure>
+      <Region id="sidebar" width="280px" position="left"/>
+      <Region id="main" width="flex:1" minWidth="0"/>
+      <Region id="header" height="64px"/>
+      <Region id="content" padding="24px 32px"/>
+    </LayoutStructure>
+  </SpacingAndGrid>
+
+  <!-- ==================== 5. 컴포넌트 규격 ==================== -->
+  <Components>
+    
+    <!-- 5.1 버튼 -->
+    <Component id="button" name="버튼">
+      <Sizes>
+        <Size id="xs" height="28px" paddingH="12px" fontSize="12px" borderRadius="4px"/>
+        <Size id="sm" height="32px" paddingH="16px" fontSize="14px" borderRadius="6px"/>
+        <Size id="md" height="40px" paddingH="20px" fontSize="14px" borderRadius="8px"/>
+        <Size id="lg" height="48px" paddingH="24px" fontSize="16px" borderRadius="8px"/>
+        <Size id="xl" height="56px" paddingH="32px" fontSize="18px" borderRadius="10px"/>
+      </Sizes>
+      <Variants>
+        <Variant id="primary" background="#1A365D" color="#FFFFFF" fontWeight="600">
+          <State id="hover" background="#2B6CB0"/>
+          <State id="active" background="#0F2342"/>
+          <State id="disabled" background="#A0AEC0" cursor="not-allowed"/>
+        </Variant>
+        <Variant id="secondary" background="#FFFFFF" border="1px solid #E2E8F0" color="#2D3748">
+          <State id="hover" background="#F7FAFC" borderColor="#CBD5E0"/>
+        </Variant>
+        <Variant id="ghost" background="transparent" color="#2B6CB0">
+          <State id="hover" background="#EBF8FF"/>
+        </Variant>
+        <Variant id="danger" background="#E53E3E" color="#FFFFFF">
+          <State id="hover" background="#C53030"/>
+        </Variant>
+      </Variants>
+      <IconButton>
+        <Size id="sm" dimensions="32x32px" iconSize="16px" borderRadius="6px"/>
+        <Size id="md" dimensions="40x40px" iconSize="20px" borderRadius="8px"/>
+        <Size id="lg" dimensions="48x48px" iconSize="24px" borderRadius="10px"/>
+      </IconButton>
+    </Component>
+
+    <!-- 5.2 입력 필드 -->
+    <Component id="input" name="입력 필드">
+      <BaseSpec height="44px" heightLarge="52px" padding="12px 16px" border="1px solid #E2E8F0" borderRadius="8px" fontSize="16px" background="#FFFFFF" backgroundDisabled="#F7FAFC"/>
+      <States>
+        <State id="default" border="1px solid #E2E8F0"/>
+        <State id="focus" borderColor="#2B6CB0" boxShadow="0 0 0 3px rgba(43,108,176,0.15)"/>
+        <State id="error" borderColor="#E53E3E" boxShadow="0 0 0 3px rgba(229,62,62,0.15)"/>
+        <State id="disabled" background="#F7FAFC" color="#A0AEC0" cursor="not-allowed"/>
+      </States>
+      <Structure>
+        <Element id="label" fontSize="14px" fontWeight="500" color="#4A5568"/>
+        <Element id="helper" fontSize="12px" color="#718096" marginTop="6px"/>
+        <Element id="error-message" fontSize="12px" color="#E53E3E" marginTop="6px"/>
+      </Structure>
+    </Component>
+
+    <!-- 5.3 카드 -->
+    <Component id="card" name="카드">
+      <BaseSpec background="#FFFFFF" border="1px solid #E2E8F0" borderRadius="12px" padding="24px" boxShadow="0 1px 3px rgba(0,0,0,0.08)">
+        <State id="hover" boxShadow="0 4px 12px rgba(0,0,0,0.1)"/>
+      </BaseSpec>
+      <Variants>
+        <Variant id="customer-info" minWidth="320px" padding="20px" description="고객 정보 카드">
+          <Structure>
+            <Row>Avatar, 고객명, 상태뱃지</Row>
+            <Row>비자 유형 뱃지, 담당자</Row>
+            <Row>현재 단계, 진행률 바</Row>
+            <Row>액션 버튼들</Row>
+          </Structure>
+        </Variant>
+        <Variant id="ai-summary" background="#F0FDF4" leftBorder="4px solid #319795" description="AI 상담 요약 카드">
+          <Structure>
+            <Row>AI 아이콘, 제목, 타임스탬프</Row>
+            <Row>요약 내용 (핵심 문의, 감정 분석, 추천 조치)</Row>
+            <Row>원본보기, 수정, CRM 반영 버튼</Row>
+          </Structure>
+        </Variant>
+        <Variant id="process-step" description="수속 단계 카드">
+          <LeftBorder status="completed" color="#38A169"/>
+          <LeftBorder status="in-progress" color="#2B6CB0"/>
+          <LeftBorder status="pending" color="#E2E8F0"/>
+        </Variant>
+      </Variants>
+    </Component>
+
+    <!-- 5.4 모달 -->
+    <Component id="modal" name="모달">
+      <Sizes>
+        <Size id="sm" width="400px" maxHeight="80vh" usage="확인 다이얼로그, 간단 입력"/>
+        <Size id="md" width="560px" maxHeight="85vh" usage="폼 입력, 상세 정보"/>
+        <Size id="lg" width="720px" maxHeight="90vh" usage="복잡한 폼, 다단계 프로세스"/>
+        <Size id="xl" width="900px" maxHeight="90vh" usage="대시보드, 상세 분석"/>
+        <Size id="full" width="100vw - 64px" maxHeight="100vh - 64px" usage="전체 화면 모달"/>
+      </Sizes>
+      <Structure>
+        <Header height="64px" padding="20px 24px" borderBottom="1px solid #E2E8F0"/>
+        <Content padding="24px" scrollable="true"/>
+        <Footer height="72px" padding="16px 24px" borderTop="1px solid #E2E8F0"/>
+      </Structure>
+      <Overlay background="rgba(0,0,0,0.5)" backdropFilter="blur(4px)"/>
+      <Container background="#FFFFFF" borderRadius="16px" boxShadow="0 25px 50px -12px rgba(0,0,0,0.25)"/>
+    </Component>
+
+    <!-- 5.5 AI 챗봇 인터페이스 -->
+    <Component id="ai-chatbot" name="AI 챗봇">
+      <Container width="400px" height="600px" borderRadius="16px" boxShadow="0 20px 40px rgba(0,0,0,0.15)"/>
+      <MessageBubbles>
+        <Bubble id="user" alignment="right" background="#1A365D" color="#FFFFFF" borderRadius="16px 16px 4px 16px" padding="12px 16px" maxWidth="75%"/>
+        <Bubble id="ai" alignment="left" background="#F7FAFC" color="#2D3748" border="1px solid #E2E8F0" borderRadius="16px 16px 16px 4px" padding="12px 16px" maxWidth="75%"/>
+      </MessageBubbles>
+      <TypingIndicator dotSize="8px" dotColor="#A0AEC0" animation="typingBounce 1.4s infinite"/>
+      <InputArea height="56px" maxHeight="120px" padding="12px 16px">
+        <AttachIcon position="left" margin="12px"/>
+        <SendButton position="right" margin="12px"/>
+      </InputArea>
+    </Component>
+
+    <!-- 5.6 테이블 -->
+    <Component id="table" name="테이블">
+      <Header background="#F7FAFC" padding="12px 16px" fontSize="12px" fontWeight="600" color="#718096" textTransform="uppercase" letterSpacing="0.05em"/>
+      <Cell padding="16px" fontSize="14px" color="#2D3748" borderBottom="1px solid #E2E8F0"/>
+      <RowHover background="#F7FAFC"/>
+      <RowSelected background="#EBF8FF"/>
+      <ColumnTypes>
+        <Column id="checkbox" minWidth="48px" align="center"/>
+        <Column id="id" minWidth="80px" align="left"/>
+        <Column id="name" minWidth="150px" align="left"/>
+        <Column id="status" minWidth="120px" align="center"/>
+        <Column id="date" minWidth="120px" align="center"/>
+        <Column id="amount" minWidth="100px" align="right"/>
+        <Column id="actions" minWidth="120px" align="center"/>
+      </ColumnTypes>
+    </Component>
+
+    <!-- 5.7 뱃지 및 태그 -->
+    <Component id="badge" name="뱃지">
+      <BaseSpec padding="4px 10px" fontSize="12px" fontWeight="600" borderRadius="6px" gap="4px"/>
+      <Variants>
+        <Variant id="success" background="#C6F6D5" color="#22543D"/>
+        <Variant id="warning" background="#FEFCBF" color="#744210"/>
+        <Variant id="error" background="#FED7D7" color="#822727"/>
+        <Variant id="info" background="#BEE3F8" color="#2A4365"/>
+        <Variant id="neutral" background="#E2E8F0" color="#4A5568"/>
+        <Variant id="niw" background="#E9D8FD" color="#553C9A"/>
+        <Variant id="eb1" background="#FEEBC8" color="#C05621"/>
+        <Variant id="eb5" background="#B2F5EA" color="#234E52"/>
+      </Variants>
+    </Component>
+    
+    <Component id="tag" name="태그">
+      <BaseSpec padding="4px 8px" fontSize="12px" fontWeight="500" borderRadius="4px" border="1px solid #E2E8F0" background="#FFFFFF" color="#4A5568"/>
+      <RemovableTag paddingRight="4px">
+        <RemoveButton width="16px" height="16px" borderRadius="50%"/>
+      </RemovableTag>
+    </Component>
+
+    <!-- 5.8 알림 및 토스트 -->
+    <Component id="alert" name="인라인 알림">
+      <BaseSpec padding="16px" borderRadius="8px" gap="12px"/>
+      <IconSize width="20px" height="20px"/>
+      <Variants>
+        <Variant id="success" background="#F0FFF4" border="1px solid #9AE6B4"/>
+        <Variant id="warning" background="#FFFAF0" border="1px solid #FBD38D"/>
+        <Variant id="error" background="#FFF5F5" border="1px solid #FEB2B2"/>
+        <Variant id="info" background="#EBF8FF" border="1px solid #90CDF4"/>
+      </Variants>
+    </Component>
+    
+    <Component id="toast" name="토스트">
+      <BaseSpec position="fixed" bottom="24px" right="24px" minWidth="320px" maxWidth="420px" padding="16px 20px" background="#2D3748" color="#FFFFFF" borderRadius="8px" boxShadow="0 10px 25px rgba(0,0,0,0.2)" zIndex="9999" gap="12px"/>
+    </Component>
+
+    <!-- 5.9 프로그레스 및 스테퍼 -->
+    <Component id="progress-bar" name="프로그레스 바">
+      <Track height="8px" background="#E2E8F0" borderRadius="4px"/>
+      <Fill background="linear-gradient(90deg, #2B6CB0, #319795)" borderRadius="4px" transition="width 0.3s ease"/>
+      <WithLabel gap="12px" labelFontSize="14px" labelFontWeight="600" labelColor="#2D3748" labelMinWidth="48px"/>
+    </Component>
+    
+    <Component id="stepper" name="수속 단계 스테퍼">
+      <Circle size="32px" borderRadius="50%" fontSize="14px" fontWeight="600">
+        <State id="completed" background="#1A365D" color="#FFFFFF"/>
+        <State id="current" background="#FFFFFF" border="2px solid #1A365D" color="#1A365D"/>
+        <State id="pending" background="#FFFFFF" border="2px solid #CBD5E0" color="#A0AEC0"/>
+      </Circle>
+      <Line height="2px" background="#E2E8F0">
+        <State id="completed" background="#1A365D"/>
+      </Line>
+    </Component>
+
+    <!-- 5.10 폼 레이아웃 -->
+    <Component id="form-layout" name="폼 레이아웃">
+      <FormGroup marginBottom="24px"/>
+      <Label display="block" fontSize="14px" fontWeight="500" color="#4A5568" marginBottom="8px"/>
+      <RequiredIndicator color="#E53E3E" marginLeft="2px"/>
+      <Helper fontSize="12px" color="#718096" marginTop="6px"/>
+      <ErrorMessage fontSize="12px" color="#E53E3E" marginTop="6px" gap="4px"/>
+      <LayoutPatterns>
+        <Pattern id="2-column" description="성, 이름 등 관련 필드"/>
+        <Pattern id="3-column" description="국가, 도시, 우편번호"/>
+        <Pattern id="inline-label" description="라벨-인풋 수평 배치"/>
+      </LayoutPatterns>
+    </Component>
+  </Components>
+
+  <!-- ==================== 6. 페이지 레이아웃 ==================== -->
+  <PageLayouts>
+    <Layout id="main-structure" name="전체 레이아웃">
+      <TopNavigation height="60px">
+        <Logo position="left"/>
+        <SearchBar position="center"/>
+        <Notifications position="right"/>
+        <Profile position="right"/>
+      </TopNavigation>
+      <Sidebar width="260px" position="left">
+        <Navigation/>
+        <QuickLinks/>
+        <UserInfo/>
+      </Sidebar>
+      <MainContent>
+        <PageHeader actions="right"/>
+        <ContentArea padding="32px"/>
+      </MainContent>
+    </Layout>
+
+    <Layout id="dashboard" name="대시보드">
+      <StatsRow columns="4">
+        <StatCard>전체 고객</StatCard>
+        <StatCard>진행중 케이스</StatCard>
+        <StatCard>이번 달 완료</StatCard>
+        <StatCard>AI 요약</StatCard>
+      </StatsRow>
+      <ContentRow columns="2">
+        <Section>최근 상담 내역 (테이블)</Section>
+        <Section>AI 인사이트 (카드 리스트)</Section>
+      </ContentRow>
+      <ChartRow>수속 단계별 현황 차트</ChartRow>
+    </Layout>
+
+    <Layout id="customer-detail" name="고객 상세 페이지">
+      <Header backButton="true" title="고객명" actions="수정, 삭제"/>
+      <ProfileSection>
+        <ProfilePhoto/>
+        <CustomerName/>
+        <VisaStatus/>
+        <QuickMemo/>
+      </ProfileSection>
+      <InfoSection>
+        <BasicInfo>이메일, 연락처, 담당자</BasicInfo>
+        <ProgressBar percentage="65%"/>
+      </InfoSection>
+      <TabSection tabs="상담이력, 서류현황, AI분석, 결제내역">
+        <TabContent/>
+      </TabSection>
+    </Layout>
+
+    <Layout id="ai-consultation" name="AI 상담 페이지">
+      <Header title="AI 상담" actions="대화 내보내기"/>
+      <SidePanel width="auto">상담 이력 목록</SidePanel>
+      <ChatInterface>
+        <MessageArea scrollable="true"/>
+        <InputArea/>
+      </ChatInterface>
+      <SuggestionPanel>AI 제안 사항, 관련 성공사례</SuggestionPanel>
+    </Layout>
+  </PageLayouts>
+
+  <!-- ==================== 7. 반응형 디자인 ==================== -->
+  <ResponsiveDesign approach="Mobile First">
+    <Breakpoints>
+      <Breakpoint id="xs" range="< 576px" description="모바일 세로"/>
+      <Breakpoint id="sm" range=">= 576px" description="모바일 가로"/>
+      <Breakpoint id="md" range=">= 768px" description="태블릿"/>
+      <Breakpoint id="lg" range=">= 992px" description="데스크톱 소형"/>
+      <Breakpoint id="xl" range=">= 1200px" description="데스크톱"/>
+      <Breakpoint id="2xl" range=">= 1440px" description="대형 데스크톱"/>
+    </Breakpoints>
+    <ComponentBehaviors>
+      <Behavior component="sidebar" desktop="고정 260px" tablet="오버레이" mobile="오버레이 (햄버거)"/>
+      <Behavior component="card-grid" desktop="3-4열" tablet="2열" mobile="1열"/>
+      <Behavior component="table" desktop="전체 표시" tablet="수평 스크롤" mobile="카드형 변환"/>
+      <Behavior component="modal" desktop="고정 너비" tablet="90vw" mobile="100vw - 32px"/>
+      <Behavior component="chatbot" desktop="플로팅 400px" tablet="전체 화면" mobile="전체 화면"/>
+    </ComponentBehaviors>
+    <ContainerPadding>
+      <Padding breakpoint="mobile" value="16px"/>
+      <Padding breakpoint="md" value="24px"/>
+      <Padding breakpoint="xl" value="32px"/>
+    </ContainerPadding>
+  </ResponsiveDesign>
+
+  <!-- ==================== 8. 접근성 ==================== -->
+  <Accessibility wcag="2.1 AA">
+    <ColorContrast>
+      <Rule type="normal-text" minRatio="4.5:1"/>
+      <Rule type="large-text" minRatio="3:1" threshold="18px"/>
+      <Rule type="ui-components" minRatio="3:1"/>
+    </ColorContrast>
+    <FocusStyles>
+      <Style selector=":focus-visible" outline="2px solid #2B6CB0" outlineOffset="2px"/>
+      <Style selector=".btn:focus-visible, .input:focus-visible" boxShadow="0 0 0 3px rgba(43,108,176,0.4)"/>
+    </FocusStyles>
+    <KeyboardNavigation>
+      <Rule>모든 인터랙티브 요소는 Tab 키로 접근 가능</Rule>
+      <Rule>모달 열림 시 포커스 트랩 적용</Rule>
+      <Rule>Escape 키로 모달/드롭다운 닫기</Rule>
+      <Rule>Enter/Space로 버튼 활성화</Rule>
+    </KeyboardNavigation>
+    <ARIAExamples>
+      <Example type="button"><![CDATA[<button aria-label="고객 추가" class="btn-icon"><svg>...</svg></button>]]></Example>
+      <Example type="loading"><![CDATA[<div role="status" aria-live="polite"><span class="sr-only">데이터를 불러오는 중입니다...</span></div>]]></Example>
+      <Example type="modal"><![CDATA[<div role="dialog" aria-modal="true" aria-labelledby="modal-title"><h2 id="modal-title">고객 정보 수정</h2></div>]]></Example>
+    </ARIAExamples>
+  </Accessibility>
+
+  <!-- ==================== 9. 애니메이션 ==================== -->
+  <AnimationAndInteraction>
+    <Transitions>
+      <Duration id="fast" value="150ms"/>
+      <Duration id="normal" value="200ms"/>
+      <Duration id="slow" value="300ms"/>
+      <Duration id="slower" value="500ms"/>
+      <Easing id="in-out" value="cubic-bezier(0.4, 0, 0.2, 1)"/>
+      <Easing id="out" value="cubic-bezier(0, 0, 0.2, 1)"/>
+      <Easing id="in" value="cubic-bezier(0.4, 0, 1, 1)"/>
+      <Easing id="bounce" value="cubic-bezier(0.68, -0.55, 0.265, 1.55)"/>
+    </Transitions>
+    <Keyframes>
+      <Animation id="fadeIn" from="opacity: 0" to="opacity: 1"/>
+      <Animation id="slideUp" from="transform: translateY(10px); opacity: 0" to="transform: translateY(0); opacity: 1"/>
+      <Animation id="scaleIn" from="transform: scale(0.95); opacity: 0" to="transform: scale(1); opacity: 1"/>
+      <Animation id="pulse" keyframes="0%,100%: opacity 1; 50%: opacity 0.5"/>
+      <Animation id="typingBounce" keyframes="0%,80%,100%: translateY(0); 40%: translateY(-6px)"/>
+    </Keyframes>
+    <InteractionPatterns>
+      <Pattern action="버튼 호버" animation="배경색 변경" duration="200ms"/>
+      <Pattern action="카드 호버" animation="그림자 확대 + 살짝 상승" duration="200ms"/>
+      <Pattern action="모달 열기" animation="페이드 + 스케일 업" duration="300ms"/>
+      <Pattern action="드롭다운 열기" animation="슬라이드 다운" duration="200ms"/>
+      <Pattern action="토스트 나타남" animation="슬라이드 인" duration="300ms"/>
+      <Pattern action="토스트 사라짐" animation="페이드 아웃" duration="200ms"/>
+      <Pattern action="로딩 스피너" animation="회전 (infinite)" duration="1s"/>
+      <Pattern action="타이핑 인디케이터" animation="바운스 (infinite)" duration="1.4s"/>
+    </InteractionPatterns>
+  </AnimationAndInteraction>
+
+  <!-- ==================== 10. 아이콘 ==================== -->
+  <IconsAndIllustrations>
+    <IconSystem library="Phosphor Icons" alternativeLibrary="Heroicons" style="Line (기본), Filled (활성)">
+      <Sizes>
+        <Size id="sm" value="16px"/>
+        <Size id="md" value="20px"/>
+        <Size id="lg" value="24px"/>
+        <Size id="xl" value="32px"/>
+      </Sizes>
+      <Colors>
+        <Color id="primary" value="#1A365D"/>
+        <Color id="secondary" value="#718096"/>
+        <Color id="success" value="#38A169"/>
+        <Color id="warning" value="#D69E2E"/>
+        <Color id="error" value="#E53E3E"/>
+      </Colors>
+    </IconSystem>
+    <IconMapping>
+      <Icon usage="홈/대시보드" name="House"/>
+      <Icon usage="고객 관리" name="Users"/>
+      <Icon usage="AI 상담" name="ChatCircle" alternative="Robot"/>
+      <Icon usage="문서" name="Files"/>
+      <Icon usage="설정" name="Gear"/>
+      <Icon usage="알림" name="Bell"/>
+      <Icon usage="검색" name="MagnifyingGlass"/>
+      <Icon usage="필터" name="Funnel"/>
+      <Icon usage="추가" name="Plus"/>
+      <Icon usage="삭제" name="Trash"/>
+      <Icon usage="수정" name="PencilSimple"/>
+      <Icon usage="확인/완료" name="Check"/>
+      <Icon usage="닫기" name="X"/>
+      <Icon usage="확장/더보기" name="CaretDown" alternative="DotsThree"/>
+      <Icon usage="성공" name="CheckCircle" color="green"/>
+      <Icon usage="경고" name="Warning" color="orange"/>
+      <Icon usage="에러" name="XCircle" color="red"/>
+      <Icon usage="정보" name="Info" color="blue"/>
+    </IconMapping>
+    <Illustrations style="플랫 또는 세미-플랫" maxWidth="320px" usage="빈 상태, 온보딩, 에러 페이지, 성공 확인"/>
+  </IconsAndIllustrations>
+
+  <!-- ==================== CSS 변수 정의 ==================== -->
+  <CSSVariables>
+    <VariableGroup name="Colors - Primary">
+      <Variable name="--color-primary" value="#1A365D"/>
+      <Variable name="--color-primary-light" value="#2B6CB0"/>
+      <Variable name="--color-primary-dark" value="#0F2342"/>
+    </VariableGroup>
+    <VariableGroup name="Colors - Secondary">
+      <Variable name="--color-secondary" value="#319795"/>
+      <Variable name="--color-secondary-light" value="#4FD1C5"/>
+      <Variable name="--color-accent" value="#ED8936"/>
+    </VariableGroup>
+    <VariableGroup name="Colors - Semantic">
+      <Variable name="--color-success" value="#38A169"/>
+      <Variable name="--color-warning" value="#D69E2E"/>
+      <Variable name="--color-error" value="#E53E3E"/>
+      <Variable name="--color-info" value="#3182CE"/>
+    </VariableGroup>
+    <VariableGroup name="Colors - Neutral">
+      <Variable name="--color-bg" value="#FFFFFF"/>
+      <Variable name="--color-bg-alt" value="#F7FAFC"/>
+      <Variable name="--color-surface" value="#EDF2F7"/>
+      <Variable name="--color-border" value="#E2E8F0"/>
+      <Variable name="--color-text-primary" value="#2D3748"/>
+      <Variable name="--color-text-secondary" value="#718096"/>
+      <Variable name="--color-text-muted" value="#A0AEC0"/>
+    </VariableGroup>
+    <VariableGroup name="Typography">
+      <Variable name="--font-primary" value="'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"/>
+      <Variable name="--font-mono" value="'JetBrains Mono', 'Fira Code', monospace"/>
+    </VariableGroup>
+    <VariableGroup name="Font Sizes">
+      <Variable name="--text-xs" value="0.75rem"/>
+      <Variable name="--text-sm" value="0.875rem"/>
+      <Variable name="--text-base" value="1rem"/>
+      <Variable name="--text-lg" value="1.125rem"/>
+      <Variable name="--text-xl" value="1.25rem"/>
+      <Variable name="--text-2xl" value="1.5rem"/>
+      <Variable name="--text-3xl" value="1.875rem"/>
+      <Variable name="--text-4xl" value="2.25rem"/>
+    </VariableGroup>
+    <VariableGroup name="Spacing">
+      <Variable name="--space-1" value="0.25rem"/>
+      <Variable name="--space-2" value="0.5rem"/>
+      <Variable name="--space-3" value="0.75rem"/>
+      <Variable name="--space-4" value="1rem"/>
+      <Variable name="--space-5" value="1.25rem"/>
+      <Variable name="--space-6" value="1.5rem"/>
+      <Variable name="--space-8" value="2rem"/>
+      <Variable name="--space-10" value="2.5rem"/>
+      <Variable name="--space-12" value="3rem"/>
+      <Variable name="--space-16" value="4rem"/>
+    </VariableGroup>
+    <VariableGroup name="Border Radius">
+      <Variable name="--radius-sm" value="4px"/>
+      <Variable name="--radius-md" value="8px"/>
+      <Variable name="--radius-lg" value="12px"/>
+      <Variable name="--radius-xl" value="16px"/>
+      <Variable name="--radius-full" value="9999px"/>
+    </VariableGroup>
+    <VariableGroup name="Shadows">
+      <Variable name="--shadow-sm" value="0 1px 2px rgba(0,0,0,0.05)"/>
+      <Variable name="--shadow-md" value="0 4px 6px rgba(0,0,0,0.07)"/>
+      <Variable name="--shadow-lg" value="0 10px 15px rgba(0,0,0,0.1)"/>
+      <Variable name="--shadow-xl" value="0 20px 25px rgba(0,0,0,0.15)"/>
+    </VariableGroup>
+    <VariableGroup name="Transitions">
+      <Variable name="--duration-fast" value="150ms"/>
+      <Variable name="--duration-normal" value="200ms"/>
+      <Variable name="--duration-slow" value="300ms"/>
+      <Variable name="--ease-default" value="cubic-bezier(0.4, 0, 0.2, 1)"/>
+    </VariableGroup>
+    <VariableGroup name="Z-index Scale">
+      <Variable name="--z-dropdown" value="100"/>
+      <Variable name="--z-sticky" value="200"/>
+      <Variable name="--z-modal-backdrop" value="300"/>
+      <Variable name="--z-modal" value="400"/>
+      <Variable name="--z-toast" value="500"/>
+      <Variable name="--z-tooltip" value="600"/>
+    </VariableGroup>
+  </CSSVariables>
+
+  <Metadata>
+    <Version>1.0</Version>
+    <Created>2026-01-11</Created>
+    <Author>AI Assistant</Author>
+  </Metadata>
+
+</UIUXSpecification>

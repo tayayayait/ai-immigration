@@ -1,0 +1,1288 @@
+# AI 이민 수속·고객 관리 통합 시스템
+## UI/UX 디자인 명세서 v1.0
+
+---
+
+## 목차
+1. [디자인 철학 및 원칙](#1-디자인-철학-및-원칙)
+2. [색상 시스템 (Color System)](#2-색상-시스템-color-system)
+3. [타이포그래피 (Typography)](#3-타이포그래피-typography)
+4. [간격 및 그리드 시스템 (Spacing & Grid)](#4-간격-및-그리드-시스템-spacing--grid)
+5. [컴포넌트 규격 (Component Specifications)](#5-컴포넌트-규격-component-specifications)
+6. [페이지 레이아웃 (Page Layouts)](#6-페이지-레이아웃-page-layouts)
+7. [반응형 디자인 (Responsive Design)](#7-반응형-디자인-responsive-design)
+8. [접근성 가이드라인 (Accessibility)](#8-접근성-가이드라인-accessibility)
+9. [애니메이션 및 인터랙션 (Animation & Interaction)](#9-애니메이션-및-인터랙션-animation--interaction)
+10. [아이콘 및 일러스트레이션 (Icons & Illustrations)](#10-아이콘-및-일러스트레이션-icons--illustrations)
+
+---
+
+## 1. 디자인 철학 및 원칙
+
+### 1.1 핵심 가치
+- **신뢰성 (Trust)**: 이민 수속이라는 중요한 과정에서 사용자에게 신뢰감을 주는 전문적이고 안정적인 디자인
+- **명확성 (Clarity)**: 복잡한 비자 정보와 수속 단계를 직관적으로 이해할 수 있는 정보 계층 구조
+- **효율성 (Efficiency)**: 상담사와 고객 모두 최소한의 클릭으로 필요한 정보에 접근 가능
+- **일관성 (Consistency)**: 전체 시스템에서 동일한 패턴과 컴포넌트 사용
+
+### 1.2 디자인 원칙
+1. **데이터 중심 설계**: AI가 처리한 정보를 시각적으로 명확하게 표현
+2. **프로그레시브 디스클로저**: 정보를 단계적으로 공개하여 인지 부하 감소
+3. **컨텍스트 기반 인터페이스**: 사용자 역할(상담사/고객)과 현재 단계에 맞는 UI 제공
+4. **에러 방지 설계**: 입력 검증 및 명확한 피드백으로 오류 최소화
+
+---
+
+## 2. 색상 시스템 (Color System)
+
+### 2.1 Primary Colors (주요 색상)
+| 용도 | 색상명 | HEX | RGB | 사용처 |
+|------|--------|-----|-----|--------|
+| Primary | Navy Blue | #1A365D | 26, 54, 93 | 주요 CTA 버튼, 헤더, 강조 요소 |
+| Primary Light | Soft Blue | #2B6CB0 | 43, 108, 176 | 호버 상태, 활성 탭 |
+| Primary Dark | Deep Navy | #0F2342 | 15, 35, 66 | 클릭/누른 상태 |
+
+### 2.2 Secondary Colors (보조 색상)
+| 용도 | 색상명 | HEX | RGB | 사용처 |
+|------|--------|-----|-----|--------|
+| Secondary | Teal | #319795 | 49, 151, 149 | AI 관련 UI, 챗봇 강조 |
+| Secondary Light | Light Teal | #4FD1C5 | 79, 209, 197 | AI 응답 배경, 성공 메시지 |
+| Accent | Coral | #ED8936 | 237, 137, 54 | 알림, 중요 표시, 뱃지 |
+
+### 2.3 Semantic Colors (의미적 색상)
+| 상태 | 색상명 | HEX | 사용처 |
+|------|--------|-----|--------|
+| Success | Green | #38A169 | 수속 완료, 성공 메시지 |
+| Warning | Amber | #D69E2E | 주의 필요, 마감 임박 |
+| Error | Red | #E53E3E | 오류, 거절, 실패 |
+| Info | Blue | #3182CE | 정보 안내, 팁 |
+
+### 2.4 Neutral Colors (중립 색상)
+| 용도 | 색상명 | HEX | 사용처 |
+|------|--------|-----|--------|
+| Background | White | #FFFFFF | 메인 배경 |
+| Background Alt | Gray 50 | #F7FAFC | 카드 배경, 섹션 구분 |
+| Surface | Gray 100 | #EDF2F7 | 입력 필드 배경 |
+| Border | Gray 200 | #E2E8F0 | 구분선, 테두리 |
+| Text Primary | Gray 800 | #2D3748 | 본문 텍스트 |
+| Text Secondary | Gray 600 | #718096 | 부가 설명 텍스트 |
+| Text Muted | Gray 400 | #A0AEC0 | 플레이스홀더, 비활성 |
+
+### 2.5 비자 유형별 색상 코드
+| 비자 유형 | HEX | 사용처 |
+|-----------|-----|--------|
+| NIW | #6B46C1 (Purple) | NIW 관련 뱃지, 태그 |
+| EB-1 | #DD6B20 (Orange) | EB-1 관련 뱃지, 태그 |
+| EB-5 | #38B2AC (Teal) | EB-5 관련 뱃지, 태그 |
+| F-1/OPT | #4299E1 (Blue) | F-1/OPT 관련 뱃지, 태그 |
+| H-1B | #48BB78 (Green) | H-1B 관련 뱃지, 태그 |
+
+---
+
+## 3. 타이포그래피 (Typography)
+
+### 3.1 폰트 패밀리
+```css
+/* Primary Font (한글 & 영문) */
+--font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+/* Monospace (코드, 데이터) */
+--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+```
+
+### 3.2 폰트 크기 스케일 (Font Size Scale)
+| 단계 | rem | px | Line Height | 용도 |
+|------|-----|-----|-------------|------|
+| xs | 0.75rem | 12px | 1.5 | 캡션, 뱃지 텍스트 |
+| sm | 0.875rem | 14px | 1.5 | 보조 텍스트, 버튼 소 |
+| base | 1rem | 16px | 1.6 | 본문 텍스트 |
+| lg | 1.125rem | 18px | 1.6 | 강조 본문 |
+| xl | 1.25rem | 20px | 1.5 | 서브 헤딩 |
+| 2xl | 1.5rem | 24px | 1.4 | 섹션 제목 |
+| 3xl | 1.875rem | 30px | 1.3 | 페이지 제목 |
+| 4xl | 2.25rem | 36px | 1.2 | 대시보드 헤더 |
+| 5xl | 3rem | 48px | 1.1 | 히어로 텍스트 |
+
+### 3.3 폰트 굵기 (Font Weight)
+| 명칭 | 값 | 용도 |
+|------|-----|------|
+| Regular | 400 | 본문 텍스트 |
+| Medium | 500 | 강조, 라벨 |
+| SemiBold | 600 | 소제목, 버튼 |
+| Bold | 700 | 제목, 헤딩 |
+
+### 3.4 텍스트 스타일 프리셋
+```css
+/* Heading Styles */
+.h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.h2 { font-size: 1.875rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+.h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.4; }
+.h4 { font-size: 1.25rem; font-weight: 600; line-height: 1.5; }
+.h5 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
+.h6 { font-size: 1rem; font-weight: 600; line-height: 1.5; }
+
+/* Body Styles */
+.body-lg { font-size: 1.125rem; font-weight: 400; line-height: 1.6; }
+.body-md { font-size: 1rem; font-weight: 400; line-height: 1.6; }
+.body-sm { font-size: 0.875rem; font-weight: 400; line-height: 1.5; }
+
+/* Caption & Label */
+.caption { font-size: 0.75rem; font-weight: 400; line-height: 1.5; color: #718096; }
+.label { font-size: 0.875rem; font-weight: 500; line-height: 1.5; color: #4A5568; }
+```
+
+---
+
+## 4. 간격 및 그리드 시스템 (Spacing & Grid)
+
+### 4.1 간격 스케일 (Spacing Scale)
+| 단계 | rem | px | 용도 |
+|------|-----|-----|------|
+| 0 | 0 | 0 | 없음 |
+| 1 | 0.25rem | 4px | 아이콘-텍스트 간격 |
+| 2 | 0.5rem | 8px | 요소 내부 작은 간격 |
+| 3 | 0.75rem | 12px | 컴포넌트 내부 간격 |
+| 4 | 1rem | 16px | 기본 패딩 |
+| 5 | 1.25rem | 20px | 중간 간격 |
+| 6 | 1.5rem | 24px | 섹션 내부 간격 |
+| 8 | 2rem | 32px | 컴포넌트 간 간격 |
+| 10 | 2.5rem | 40px | 섹션 간 간격 |
+| 12 | 3rem | 48px | 대형 섹션 간격 |
+| 16 | 4rem | 64px | 페이지 섹션 구분 |
+| 20 | 5rem | 80px | 페이지 상하 여백 |
+
+### 4.2 그리드 시스템 (Grid System)
+```css
+/* 12 Column Grid */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+/* Column Definitions */
+.col-1 { grid-column: span 1; }   /* 8.33% */
+.col-2 { grid-column: span 2; }   /* 16.66% */
+.col-3 { grid-column: span 3; }   /* 25% */
+.col-4 { grid-column: span 4; }   /* 33.33% */
+.col-6 { grid-column: span 6; }   /* 50% */
+.col-8 { grid-column: span 8; }   /* 66.66% */
+.col-12 { grid-column: span 12; } /* 100% */
+```
+
+### 4.3 레이아웃 구조
+```
++------------------+----------------------------------------+
+|    Sidebar       |              Main Content              |
+|    (280px)       |           (flex: 1, min: 0)           |
+|                  |                                        |
+|  - Navigation    |  +----------------------------------+  |
+|  - Quick Links   |  |          Header (64px)           |  |
+|  - User Info     |  +----------------------------------+  |
+|                  |  |                                  |  |
+|                  |  |        Content Area              |  |
+|                  |  |     (padding: 24px 32px)         |  |
+|                  |  |                                  |  |
+|                  |  +----------------------------------+  |
++------------------+----------------------------------------+
+```
+
+---
+
+## 5. 컴포넌트 규격 (Component Specifications)
+
+### 5.1 버튼 (Buttons)
+
+#### 크기별 규격
+| Size | Height | Padding (H) | Font Size | Border Radius |
+|------|--------|-------------|-----------|---------------|
+| xs | 28px | 12px | 12px | 4px |
+| sm | 32px | 16px | 14px | 6px |
+| md | 40px | 20px | 14px | 8px |
+| lg | 48px | 24px | 16px | 8px |
+| xl | 56px | 32px | 18px | 10px |
+
+#### 버튼 유형
+```css
+/* Primary Button */
+.btn-primary {
+  background: #1A365D;
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover { background: #2B6CB0; }
+.btn-primary:active { background: #0F2342; }
+.btn-primary:disabled { background: #A0AEC0; cursor: not-allowed; }
+
+/* Secondary Button */
+.btn-secondary {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #2D3748;
+}
+.btn-secondary:hover { background: #F7FAFC; border-color: #CBD5E0; }
+
+/* Ghost Button */
+.btn-ghost {
+  background: transparent;
+  color: #2B6CB0;
+}
+.btn-ghost:hover { background: #EBF8FF; }
+
+/* Danger Button */
+.btn-danger {
+  background: #E53E3E;
+  color: #FFFFFF;
+}
+.btn-danger:hover { background: #C53030; }
+```
+
+#### 아이콘 버튼 규격
+| Size | Dimensions | Icon Size | Border Radius |
+|------|------------|-----------|---------------|
+| sm | 32x32px | 16px | 6px |
+| md | 40x40px | 20px | 8px |
+| lg | 48x48px | 24px | 10px |
+
+---
+
+### 5.2 입력 필드 (Input Fields)
+
+#### 기본 규격
+| 속성 | 값 |
+|------|-----|
+| Height | 44px (기본), 52px (대형) |
+| Padding | 12px 16px |
+| Border | 1px solid #E2E8F0 |
+| Border Radius | 8px |
+| Font Size | 16px |
+| Background | #FFFFFF (기본), #F7FAFC (비활성) |
+
+#### 상태별 스타일
+```css
+/* Default */
+.input {
+  height: 44px;
+  padding: 12px 16px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* Focus */
+.input:focus {
+  outline: none;
+  border-color: #2B6CB0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
+/* Error */
+.input-error {
+  border-color: #E53E3E;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
+}
+
+/* Disabled */
+.input:disabled {
+  background: #F7FAFC;
+  color: #A0AEC0;
+  cursor: not-allowed;
+}
+```
+
+#### 입력 필드 구조
+```
++-----------------------------------------------+
+| Label (14px, Medium, Gray 700)                |
+| [Optional] 도움말 텍스트                        |
++-----------------------------------------------+
+| [Icon]  Placeholder or Value      [Action]   | ← 44px
++-----------------------------------------------+
+| Error message or Helper text (12px, Gray 500) |
++-----------------------------------------------+
+```
+
+---
+
+### 5.3 카드 (Cards)
+
+#### 기본 카드 규격
+```css
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+```
+
+#### 카드 유형별 규격
+
+**1) 고객 정보 카드**
+```
++------------------------------------------+
+|  [Avatar]  고객명                 [상태]   |
+|            이메일/연락처                   |
++------------------------------------------+
+|  비자 유형: [뱃지]  |  담당자: 홍길동      |
++------------------------------------------+
+|  현재 단계: I-140 접수 완료              |
+|  진행률: [====================] 65%      |
++------------------------------------------+
+|  [상세보기]              [빠른 메모 추가]  |
++------------------------------------------+
+```
+- 크기: 가로 100% (그리드 기준 col-4 권장)
+- 최소 너비: 320px
+- 패딩: 20px
+
+**2) AI 상담 요약 카드**
+```
++------------------------------------------+
+|  🤖 AI 상담 요약          2024.01.15 14:30|
++------------------------------------------+
+|  [요약 내용]                              |
+|  - 핵심 문의사항: NIW 자격 요건 확인       |
+|  - 고객 감정: 긍정적 (신뢰도 85%)         |
+|  - 추천 조치: 성공 사례 공유 필요          |
++------------------------------------------+
+|  [원본 보기]  [수정]  [CRM에 반영하기]     |
++------------------------------------------+
+```
+- 배경: #F0FDF4 (연한 녹색) 또는 #EBF8FF (연한 파랑)
+- 좌측 보더: 4px solid #319795 (Teal)
+
+**3) 수속 단계 카드**
+```
++------------------------------------------+
+|  1  I-140 청원서 접수                     |
+|     ✓ 완료 | 2024.01.10                  |
++------------------------------------------+
+|  2  I-140 심사 중                        |
+|     ● 진행중 | 예상 완료: 2024.03.15      |
++------------------------------------------+
+|  3  I-485 신체검사                        |
+|     ○ 대기 | -                           |
++------------------------------------------+
+```
+- 완료: 좌측 보더 #38A169 (Green)
+- 진행중: 좌측 보더 #2B6CB0 (Blue)
+- 대기: 좌측 보더 #E2E8F0 (Gray)
+
+---
+
+### 5.4 모달 (Modals)
+
+#### 모달 규격
+| 크기 | Width | Max Height | 사용처 |
+|------|-------|------------|--------|
+| sm | 400px | 80vh | 확인 다이얼로그, 간단 입력 |
+| md | 560px | 85vh | 폼 입력, 상세 정보 |
+| lg | 720px | 90vh | 복잡한 폼, 다단계 프로세스 |
+| xl | 900px | 90vh | 대시보드, 상세 분석 |
+| full | 100vw - 64px | 100vh - 64px | 전체 화면 모달 |
+
+#### 모달 구조
+```
++------------------------------------------+
+|  [X 닫기]  모달 제목              [?도움말]|  ← Header: 64px
++------------------------------------------+
+|                                          |
+|            Content Area                  |  ← 스크롤 가능
+|           (padding: 24px)                |
+|                                          |
++------------------------------------------+
+|  [취소]                    [Primary CTA]  |  ← Footer: 72px
++------------------------------------------+
+```
+
+```css
+/* Modal Overlay */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Modal Container */
+.modal {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+```
+
+---
+
+### 5.5 AI 챗봇 인터페이스
+
+#### 채팅 컨테이너 규격
+```css
+.chat-container {
+  width: 400px;        /* 플로팅 시 */
+  height: 600px;       /* 최대 높이 */
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+```
+
+#### 메시지 버블 규격
+```
+[사용자 메시지 - 우측 정렬]
++------------------------------------+
+|  메시지 내용이 여기에 표시됩니다.    |
+|  최대 너비 75%, 최소 60px           |
++------------------------------------+ 오후 2:30 ✓✓
+
+[AI 메시지 - 좌측 정렬]
+  🤖 +------------------------------------+
+     |  AI 응답 내용이 여기에 표시됩니다.  |
+     |  타이핑 애니메이션 포함              |
+     +------------------------------------+
+     오후 2:31
+```
+
+```css
+/* User Message */
+.message-user {
+  background: #1A365D;
+  color: #FFFFFF;
+  border-radius: 16px 16px 4px 16px;
+  padding: 12px 16px;
+  max-width: 75%;
+  margin-left: auto;
+}
+
+/* AI Message */
+.message-ai {
+  background: #F7FAFC;
+  color: #2D3748;
+  border-radius: 16px 16px 16px 4px;
+  padding: 12px 16px;
+  max-width: 75%;
+  border: 1px solid #E2E8F0;
+}
+
+/* AI Typing Indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+}
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: #A0AEC0;
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+```
+
+#### 입력 영역 규격
+```
++------------------------------------------+
+| [📎]  메시지를 입력하세요...      [🎤] [→] |
++------------------------------------------+
+```
+- 높이: 56px (기본), 120px (확장 시 최대)
+- 패딩: 12px 16px
+- 첨부 아이콘: 왼쪽 12px
+- 전송 버튼: 오른쪽 12px
+
+---
+
+### 5.6 테이블 (Tables)
+
+#### 데이터 테이블 규격
+```css
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th {
+  background: #F7FAFC;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.table td {
+  padding: 16px;
+  font-size: 14px;
+  color: #2D3748;
+  border-bottom: 1px solid #E2E8F0;
+  vertical-align: middle;
+}
+
+.table tr:hover td {
+  background: #F7FAFC;
+}
+
+/* Row Selection */
+.table tr.selected td {
+  background: #EBF8FF;
+}
+```
+
+#### 테이블 셀 유형
+| 유형 | 최소 너비 | 정렬 | 비고 |
+|------|----------|------|------|
+| Checkbox | 48px | Center | 선택용 |
+| ID | 80px | Left | 고객/케이스 ID |
+| Name | 150px | Left | 이름 |
+| Status | 120px | Center | 상태 뱃지 |
+| Date | 120px | Center | 날짜 |
+| Amount | 100px | Right | 금액 |
+| Actions | 120px | Center | 액션 버튼 |
+
+---
+
+### 5.7 뱃지 및 태그 (Badges & Tags)
+
+#### 뱃지 규격
+```css
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  gap: 4px;
+}
+
+/* Status Badges */
+.badge-success { background: #C6F6D5; color: #22543D; }
+.badge-warning { background: #FEFCBF; color: #744210; }
+.badge-error { background: #FED7D7; color: #822727; }
+.badge-info { background: #BEE3F8; color: #2A4365; }
+.badge-neutral { background: #E2E8F0; color: #4A5568; }
+
+/* Visa Type Badges */
+.badge-niw { background: #E9D8FD; color: #553C9A; }
+.badge-eb1 { background: #FEEBC8; color: #C05621; }
+.badge-eb5 { background: #B2F5EA; color: #234E52; }
+```
+
+#### 태그 규격
+```css
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #4A5568;
+  gap: 4px;
+}
+
+.tag-removable {
+  padding-right: 4px;
+}
+
+.tag-remove-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+---
+
+### 5.8 알림 및 토스트 (Alerts & Toasts)
+
+#### 인라인 알림 규격
+```
++------------------------------------------+
+|  [Icon]  알림 제목 (선택적)               |
+|          알림 메시지 내용이 여기에...      |
+|          [Action Link]                   |
++------------------------------------------+
+```
+
+```css
+.alert {
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.alert-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.alert-success {
+  background: #F0FFF4;
+  border: 1px solid #9AE6B4;
+}
+
+.alert-warning {
+  background: #FFFAF0;
+  border: 1px solid #FBD38D;
+}
+
+.alert-error {
+  background: #FFF5F5;
+  border: 1px solid #FEB2B2;
+}
+
+.alert-info {
+  background: #EBF8FF;
+  border: 1px solid #90CDF4;
+}
+```
+
+#### 토스트 규격
+```css
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  min-width: 320px;
+  max-width: 420px;
+  padding: 16px 20px;
+  background: #2D3748;
+  color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+}
+```
+
+---
+
+### 5.9 프로그레스 및 스테퍼 (Progress & Stepper)
+
+#### 프로그레스 바
+```css
+.progress-bar {
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2B6CB0, #319795);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* With Label */
+.progress-with-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2D3748;
+  min-width: 48px;
+  text-align: right;
+}
+```
+
+#### 수속 단계 스테퍼
+```
+○──────●──────●──────○──────○
+│      │      │      │      │
+1      2      3      4      5
+접수   심사   승인   비자   입국
+       중     대기   발급   준비
+
+● 완료 (filled, Primary Blue)
+◉ 진행중 (outlined with dot, Primary Blue)
+○ 대기 (outlined, Gray 300)
+```
+
+```css
+.stepper {
+  display: flex;
+  align-items: center;
+}
+
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.stepper-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.stepper-circle-completed {
+  background: #1A365D;
+  color: #FFFFFF;
+}
+
+.stepper-circle-current {
+  background: #FFFFFF;
+  border: 2px solid #1A365D;
+  color: #1A365D;
+}
+
+.stepper-circle-pending {
+  background: #FFFFFF;
+  border: 2px solid #CBD5E0;
+  color: #A0AEC0;
+}
+
+.stepper-line {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: #E2E8F0;
+}
+
+.stepper-line-completed {
+  background: #1A365D;
+}
+```
+
+---
+
+### 5.10 폼 레이아웃 (Form Layout)
+
+#### 폼 그룹 규격
+```css
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4A5568;
+  margin-bottom: 8px;
+}
+
+.form-required {
+  color: #E53E3E;
+  margin-left: 2px;
+}
+
+.form-helper {
+  font-size: 12px;
+  color: #718096;
+  margin-top: 6px;
+}
+
+.form-error {
+  font-size: 12px;
+  color: #E53E3E;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+```
+
+#### 폼 레이아웃 패턴
+```
+[2열 레이아웃]
++-------------------+  +-------------------+
+|  성                |  |  이름             |
++-------------------+  +-------------------+
+
+[3열 레이아웃]
++-----------+  +-----------+  +-----------+
+|  국가      |  |  도시     |  |  우편번호  |
++-----------+  +-----------+  +-----------+
+
+[라벨-인풋 인라인]
+이메일:     [============================]
+비밀번호:   [============================]
+```
+
+---
+
+## 6. 페이지 레이아웃 (Page Layouts)
+
+### 6.1 전체 레이아웃 구조
+```
++------------------------------------------------------------------+
+|                         Top Navigation (60px)                     |
+| [Logo]  [Search Bar]                    [Notifications] [Profile] |
++--------+----------------------------------------------------------+
+|        |                                                          |
+|  Side  |                     Main Content                         |
+|  bar   |                                                          |
+| (260px)|  +----------------------------------------------------+  |
+|        |  |  Page Header                               [Actions]  |
+| [Nav]  |  +----------------------------------------------------+  |
+| [Links]|  |                                                    |  |
+|        |  |  Content Area                                      |  |
+|        |  |  (Padding: 32px)                                   |  |
+|        |  |                                                    |  |
++--------+----------------------------------------------------------+
+```
+
+### 6.2 대시보드 레이아웃
+```
++------------------------------------------------------------------+
+|  대시보드                                    2024.01.15 | [새로고침] |
++------------------------------------------------------------------+
+|                                                                    |
+|  +----------------+ +----------------+ +----------------+ +------+ |
+|  | 전체 고객       | | 진행중 케이스   | | 이번 달 완료    | | AI   | |
+|  |     1,234      | |      89       | |      12       | | 요약  | |
+|  +----------------+ +----------------+ +----------------+ +------+ |
+|                                                                    |
+|  +--------------------------------+ +----------------------------+ |
+|  |                                | |                            | |
+|  |  최근 상담 내역                  | |  AI 인사이트               | |
+|  |  (테이블)                       | |  (카드 리스트)             | |
+|  |                                | |                            | |
+|  +--------------------------------+ +----------------------------+ |
+|                                                                    |
+|  +---------------------------------------------------------------+ |
+|  |  수속 단계별 현황 (차트)                                        | |
+|  +---------------------------------------------------------------+ |
++------------------------------------------------------------------+
+```
+
+### 6.3 고객 상세 페이지 레이아웃
+```
++------------------------------------------------------------------+
+|  ← 뒤로  |  홍길동 고객 상세                     [수정] [삭제]      |
++------------------------------------------------------------------+
+|                                                                    |
+|  +-------------------+  +--------------------------------------+  |
+|  |                   |  |  기본 정보                            |  |
+|  |  [프로필 사진]     |  |  이메일: hong@email.com              |  |
+|  |  홍길동           |  |  연락처: 010-1234-5678              |  |
+|  |  NIW 진행중       |  |  담당자: 김상담                       |  |
+|  |                   |  +--------------------------------------+  |
+|  +-------------------+  |  수속 진행 현황                        |  |
+|                        |  [========●=========] 65%             |  |
+|  +-------------------+  +--------------------------------------+  |
+|  |  빠른 메모 추가   |                                           |
+|  +-------------------+                                           |
+|                                                                    |
+|  [탭: 상담이력 | 서류현황 | AI분석 | 결제내역]                       |
+|  +---------------------------------------------------------------+ |
+|  |                                                               | |
+|  |  탭 콘텐츠 영역                                                | |
+|  |                                                               | |
+|  +---------------------------------------------------------------+ |
++------------------------------------------------------------------+
+```
+
+### 6.4 AI 상담 페이지 레이아웃
+```
++------------------------------------------------------------------+
+|  AI 상담                                           [대화 내보내기] |
++------------------------------------------------------------------+
+|                                                                    |
+|  +------------------------+  +-----------------------------------+ |
+|  |                        |  |                                   | |
+|  |  상담 이력 목록         |  |  채팅 인터페이스                   | |
+|  |  (사이드 패널)          |  |                                   | |
+|  |                        |  |  [메시지 버블들...]                | |
+|  |  - 2024.01.15 14:30   |  |                                   | |
+|  |    NIW 자격 문의 →     |  |                                   | |
+|  |                        |  |                                   | |
+|  |  - 2024.01.14 10:00   |  +-----------------------------------+ |
+|  |    서류 준비 →         |  |  메시지 입력창                     | |
+|  |                        |  +-----------------------------------+ |
+|  +------------------------+                                        |
+|                            +-----------------------------------+  |
+|                            |  AI 제안 사항 / 관련 성공사례        |  |
+|                            +-----------------------------------+  |
++------------------------------------------------------------------+
+```
+
+---
+
+## 7. 반응형 디자인 (Responsive Design)
+
+### 7.1 브레이크포인트
+| 명칭 | 범위 | 설명 |
+|------|------|------|
+| xs | < 576px | 모바일 세로 |
+| sm | ≥ 576px | 모바일 가로 |
+| md | ≥ 768px | 태블릿 |
+| lg | ≥ 992px | 데스크톱 소형 |
+| xl | ≥ 1200px | 데스크톱 |
+| 2xl | ≥ 1440px | 대형 데스크톱 |
+
+### 7.2 반응형 그리드 적용
+```css
+/* Mobile First Approach */
+.container {
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 32px;
+  }
+}
+
+/* Sidebar Behavior */
+@media (max-width: 991px) {
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+}
+```
+
+### 7.3 컴포넌트별 반응형 규칙
+| 컴포넌트 | Desktop | Tablet | Mobile |
+|---------|---------|--------|--------|
+| Sidebar | 고정 260px | 오버레이 | 오버레이 (햄버거) |
+| 카드 그리드 | 3-4열 | 2열 | 1열 |
+| 테이블 | 전체 표시 | 수평 스크롤 | 카드형 변환 |
+| 모달 | 고정 너비 | 90vw | 100vw - 32px |
+| 챗봇 | 플로팅 400px | 전체 화면 | 전체 화면 |
+
+---
+
+## 8. 접근성 가이드라인 (Accessibility)
+
+### 8.1 색상 대비 (Color Contrast)
+- 일반 텍스트: 최소 4.5:1 대비율
+- 대형 텍스트 (18px 이상): 최소 3:1 대비율
+- UI 컴포넌트: 최소 3:1 대비율
+
+### 8.2 포커스 스타일
+```css
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid #2B6CB0;
+  outline-offset: 2px;
+}
+
+/* Focus Ring for Interactive Elements */
+.btn:focus-visible,
+.input:focus-visible {
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.4);
+}
+```
+
+### 8.3 키보드 내비게이션
+- 모든 인터랙티브 요소는 Tab 키로 접근 가능
+- 모달 열림 시 포커스 트랩 적용
+- Escape 키로 모달/드롭다운 닫기
+- Enter/Space로 버튼 활성화
+
+### 8.4 ARIA 레이블
+```html
+<!-- 버튼 예시 -->
+<button aria-label="고객 추가" class="btn-icon">
+  <svg>...</svg>
+</button>
+
+<!-- 로딩 상태 -->
+<div role="status" aria-live="polite">
+  <span class="sr-only">데이터를 불러오는 중입니다...</span>
+</div>
+
+<!-- 모달 -->
+<div role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <h2 id="modal-title">고객 정보 수정</h2>
+</div>
+```
+
+---
+
+## 9. 애니메이션 및 인터랙션 (Animation & Interaction)
+
+### 9.1 기본 트랜지션
+```css
+/* Duration Scale */
+--duration-fast: 150ms;
+--duration-normal: 200ms;
+--duration-slow: 300ms;
+--duration-slower: 500ms;
+
+/* Easing Functions */
+--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+--ease-out: cubic-bezier(0, 0, 0.2, 1);
+--ease-in: cubic-bezier(0.4, 0, 1, 1);
+--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
+### 9.2 공통 애니메이션
+```css
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide Up */
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Pulse (for notifications) */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Typing Indicator */
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+```
+
+### 9.3 인터랙션 패턴
+| 동작 | 애니메이션 | 시간 |
+|------|-----------|------|
+| 버튼 호버 | 배경색 변경 | 200ms |
+| 카드 호버 | 그림자 확대 + 살짝 상승 | 200ms |
+| 모달 열기 | 페이드 + 스케일 업 | 300ms |
+| 드롭다운 열기 | 슬라이드 다운 | 200ms |
+| 토스트 나타남 | 슬라이드 인 | 300ms |
+| 토스트 사라짐 | 페이드 아웃 | 200ms |
+| 로딩 스피너 | 회전 (infinite) | 1s |
+| 타이핑 인디케이터 | 바운스 (infinite) | 1.4s |
+
+---
+
+## 10. 아이콘 및 일러스트레이션 (Icons & Illustrations)
+
+### 10.1 아이콘 시스템
+- **라이브러리**: Phosphor Icons (추천) 또는 Heroicons
+- **스타일**: Line (기본), Filled (활성/선택 상태)
+- **크기**: 16px, 20px, 24px, 32px
+
+### 10.2 아이콘 사용 규칙
+```css
+/* Icon Sizes */
+.icon-sm { width: 16px; height: 16px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-lg { width: 24px; height: 24px; }
+.icon-xl { width: 32px; height: 32px; }
+
+/* Icon Colors */
+.icon-primary { color: #1A365D; }
+.icon-secondary { color: #718096; }
+.icon-success { color: #38A169; }
+.icon-warning { color: #D69E2E; }
+.icon-error { color: #E53E3E; }
+```
+
+### 10.3 주요 아이콘 매핑
+| 용도 | 아이콘 | 비고 |
+|------|--------|------|
+| 홈/대시보드 | House | - |
+| 고객 관리 | Users | - |
+| AI 상담 | ChatCircle | 또는 Robot |
+| 문서 | Files | - |
+| 설정 | Gear | - |
+| 알림 | Bell | 뱃지 추가 가능 |
+| 검색 | MagnifyingGlass | - |
+| 필터 | Funnel | - |
+| 추가 | Plus | 원형 배경 가능 |
+| 삭제 | Trash | 위험 색상 사용 |
+| 수정 | PencilSimple | - |
+| 확인/완료 | Check | 원형 배경 가능 |
+| 닫기 | X | - |
+| 확장/더보기 | CaretDown | 또는 DotsThree |
+| 성공 | CheckCircle | 녹색 |
+| 경고 | Warning | 주황색 |
+| 에러 | XCircle | 빨간색 |
+| 정보 | Info | 파란색 |
+
+### 10.4 일러스트레이션 가이드
+- **스타일**: 플랫 또는 세미-플랫, 브랜드 컬러 활용
+- **사용처**: 빈 상태(Empty State), 온보딩, 에러 페이지, 성공 확인
+- **크기**: 최대 320px 너비, 비율 유지
+
+---
+
+## 부록: CSS 변수 전체 정의
+
+```css
+:root {
+  /* Colors - Primary */
+  --color-primary: #1A365D;
+  --color-primary-light: #2B6CB0;
+  --color-primary-dark: #0F2342;
+  
+  /* Colors - Secondary */
+  --color-secondary: #319795;
+  --color-secondary-light: #4FD1C5;
+  --color-accent: #ED8936;
+  
+  /* Colors - Semantic */
+  --color-success: #38A169;
+  --color-warning: #D69E2E;
+  --color-error: #E53E3E;
+  --color-info: #3182CE;
+  
+  /* Colors - Neutral */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F7FAFC;
+  --color-surface: #EDF2F7;
+  --color-border: #E2E8F0;
+  --color-text-primary: #2D3748;
+  --color-text-secondary: #718096;
+  --color-text-muted: #A0AEC0;
+  
+  /* Typography */
+  --font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-index Scale */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}
+```
+
+---
+
+## 변경 이력
+
+| 버전 | 날짜 | 작성자 | 변경 내용 |
+|------|------|--------|----------|
+| 1.0 | 2026.01.11 | AI Assistant | 최초 작성 |
+
+---
+
+**문서 끝**
