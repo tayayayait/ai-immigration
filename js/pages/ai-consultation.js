@@ -222,7 +222,7 @@ async function sendMessage() {
 
   try {
     // Call Backend API
-    const response = await fetch('http://localhost:3001/api/chat', {
+    const response = await fetch('/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
